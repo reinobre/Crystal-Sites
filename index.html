@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="CRYSTAL SITES - Ferramentas profissionais em tom rosa para bypass, geradores e extensões." />
+  <meta name="theme-color" content="#ff4fa7" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>CRYSTAL SITES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="https://i.ibb.co/your-favicon.png" type="image/png"> <!-- Substitua pelo seu favicon -->
+  <style>
+    /* [O CSS completo da versão anterior vai aqui - copie do meu último mensaje] */
+    :root {
+      --rosa-claro: #ffcce5;
+      --rosa-medio: #ff99cc;
+      --rosa-escuro: #ff4fa7;
+      --branco: #ffffff;
+      --sombra-glow: rgba(255, 153, 204, 0.5);
+      --gradiente-card: linear-gradient(135deg, rgba(255, 204, 229, 0.2), rgba(255, 153, 204, 0.3));
+      --gradiente-btn: linear-gradient(135deg, var(--rosa-medio), var(--rosa-escuro));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: url('https://i.ibb.co/FLDX3m9R/0661c2d6255be7166b55b767dd25c5e1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--branco);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .nevoa {
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, var(--rosa-claro) 0%, transparent 70%);
+      opacity: 0.2;
+      z-index: 0;
+      animation: moveNevoa 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes moveNevoa {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50%, -50%); }
+    }
+
+    #particles-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--rosa-claro);
+      text-shadow: 0 0 20px var(--sombra-glow);
+      margin-bottom: 3rem;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 10px var(--sombra-glow); }
+      100% { text-shadow: 0 0 30px var(--sombra-glow); }
+    }
+
+    .cards {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .row-top {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .row-bottom {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      background: var(--gradiente-card);
+      border: 2px solid var(--rosa-medio);
+      border-radius: 25px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 40px var(--sombra-glow);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      animation: cardSlide 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes cardSlide {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.05) rotate(1deg);
+      box-shadow: 0 25px 50px var(--sombra-glow);
+      border-color: var(--rosa-claro);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card i {
+      font-size: 3rem;
+      color: var(--rosa-escuro);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--sombra-glow);
+      animation: iconRotate 3s infinite linear;
+    }
+
+    @keyframes iconRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .card h2 {
+      color: var(--rosa-claro);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px var(--sombra-glow);
+    }
+
+    .card p {
+      color: #eee;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card a, .discord-btn {
+      display: inline-block;
+      background: var(--gradiente-btn);
+      color: var(--branco);
+     .padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px var(--sombra-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card a:hover, .discord-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px  Dil 30px var(--sombra-glow);
+      background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-medio));
+    }
+
+    .card a::after, .discord-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+      opacity: 0;
+    }
+
+    .card a:hover::after, .discord-btn:hover::after {
+      width: 400%;
+      height: 400%;
+      opacity: 1;
+    }
+
+    .discord-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .container { padding: 3rem 1.5rem; }
+      .row-top { grid-template-columns: repeat(2, 1fr); }
+      .title { font-size: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 2rem 1rem; }
+      .row-top { grid-template-columns: 1fr; }
+      .title { font-size: 2.5rem; }
+      .card { padding: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 1.5rem 0.5rem; }
+      .title { font-size: 2rem; }
+      .card i { font-size: 2.5rem; }
+      .card h2 { font-size: 1.8rem; }
+      .card p { font-size: 1rem; }
+      .card a, .discord-btn { padding: 0.8rem 1.5rem; }
+    }
+
+    @media (min-width: 1200px) {
+      .container { padding: 5rem 3rem; }
+      .title { font-size: 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="nevoa"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="container">
+    <h1 class="title">CRYSTAL SITES</h1>
+
+    <div class="cards row-top">
+      <div class="card">
+        <i class="fas fa-cogs"></i>
+        <h2>Gerador</h2>
+        <p>Acesse o melhor gerador da atualidade removendo as seguranças automático e com os melhores dominios.</p>
+        <a href="https://app.beaming.pro/u/ControlPage" target="_blank" aria-label="Acessar Gerador">Acessar Gerador</a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-shield-alt"></i>
+        <h2>Bypass de Segurança</h2>
+        <p>Bypass para burlar as seguranças da conta. Ferramenta avançada para contornar restrições e verificações.</p>
+        <a href="https://rbx-tool.com/BypassAge/ControlPage" target="_blank" aria-label="Acessar Bypass">Acessar Agora</a>
+      </div>
+    </div>
+
+    <div class="cards row-bottom">
+      <div class="card">
+        <i class="fas fa-plug"></i>
+        <h2>Extensão OP</h2>
+        <p>Entre no Roblox utilizando o Cookie da forma mais rápida possível sendo redirecionado direto para as informações da conta.</p>
+        <a href="https://drive.google.com/file/d/1IqiKdPqf8KX-6WFR-sa9BmaMZnLb-8dQ/view?usp=drivesdk" target="_blank" aria-label="Baixar Extensão">Baixar</a>
+      </div>
+    </div>
+
+    <div class="discord-section">
+      <a class="discord-btn" href="https://discord.gg/EPmgvsP47R" target="_blank" aria-livinglabel="Entrar no Discord">Entrar no Discord</a>
+    </div>
+  </div>
+
+  <script>
+    // Forçar HTTPS
+    if (location.protocol !== 'https:' && !location.hostname.includes('localhost')) {
+      location.replace(`https://${location.href.substring(location.protocol.length)}`);
+    }
+
+    // Partículas
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = `rgba(255, 153, 204, ${Math.random() * 0.5 + 0.3})`;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+        if (particle.size <= 0.2) {
+          particles.splice(index, 1);
+          particles.push(new Particle());
+        }
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  </script>
+</body>
+</html>
